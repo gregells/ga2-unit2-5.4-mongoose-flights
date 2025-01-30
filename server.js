@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 // Mount and configure dotenv middleware:
 require('dotenv').config();
+require('./config/database');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

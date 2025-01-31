@@ -7,16 +7,26 @@ module.exports = {
 }
 
 async function index (req, res) {
-  const flights = await Flight.find({});
-  res.render('flights/index', {
-    title: "All Flights",
-    flights
-  });
+  try {
+    const flights = await Flight.find({});
+    res.render('flights/index', {
+      title: "All Flights",
+      flights,
+      errorMsg: ''
+    });
+  } catch (err) {
+    console.log(err);
+    res.render('flights/index', {
+      title: "All Flights",
+      errorMsg: err.message
+    });
+  }
 }
 
 function newFlight (req, res) {
   res.render('flights/new', {
-    title: 'Add New Flight'
+    title: 'Add New Flight',
+    errorMsg: ''
   });
 }
 
@@ -28,7 +38,7 @@ async function create (req, res) {
     console.log(err);
     res.render('flights/new', { 
       title: 'Add New Flight',
-      errorMsg: err.messge
+      errorMsg: err.message
     });
   }
 }

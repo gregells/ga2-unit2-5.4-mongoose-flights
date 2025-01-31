@@ -47,7 +47,8 @@ async function create (req, res) {
     console.log(err);
     res.render('flights/new', { 
       title: 'Add New Flight',
-      errorMsg: err.message
+      errorMsg: err.message,
+      defaultDeparts: ''
     });
   }
 }

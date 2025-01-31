@@ -24,9 +24,18 @@ async function index (req, res) {
 }
 
 function newFlight (req, res) {
+  // Create default time to pass to template:
+  const newFlight = new Flight();
+  const departs = newFlight.departs;
+  let defaultDeparts = `${departs.getFullYear()}`;
+  defaultDeparts += `-${(departs.getMonth()+1).toString().padStart(2, '0')}`
+  defaultDeparts += `-${departs.getDate().toString().padStart(2, '0')}`
+  defaultDeparts += `T${departs.getHours()}:${departs.getMinutes()}`;
+  
   res.render('flights/new', {
     title: 'Add New Flight',
-    errorMsg: ''
+    defaultDeparts,
+    errorMsg: '',
   });
 }
 

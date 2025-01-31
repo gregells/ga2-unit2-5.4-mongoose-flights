@@ -9,9 +9,11 @@ module.exports = {
 async function index (req, res) {
   try {
     const flights = await Flight.find({}).sort({ departs: 1 });
+    const currentDate = new Date();
     res.render('flights/index', {
       title: "All Flights",
       flights,
+      currentDate,
       errorMsg: ''
     });
   } catch (err) {

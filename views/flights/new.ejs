@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+
+<h1><%= title %></h1>
+<form action="/flights" method="POST">
+  <select name="airline" id="">
+    <option value="Air New Zealand">Air New Zealand</option>
+    <option value="Air Canada">Air Canada</option>
+    <option value="Flair">Flair</option>
+    <option value="Porter">Porter</option>
+    <option value="United">United</option>
+  </select>
+  <select name="airport" id="">
+    <option value="AKL">AKL</option>
+    <option value="WLG">WLG</option>
+    <option value="YHZ">YHZ</option>
+    <option value="YVR">YVR</option>
+    <option value="YYZ">YYZ</option>
+  </select>
+  <input type="number" name="flightNo" id="">
+  <input type="datetime-local" name="departs">
+  <button type="submit">Add Flight</button>
+</form>
+
+<%- include('../partials/footer') %>

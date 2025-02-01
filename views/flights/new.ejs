@@ -2,23 +2,37 @@
 
 <h1><%= title %></h1>
 <form action="/flights" method="POST">
-  <select name="airline" id="">
-    <option value="Air New Zealand">Air New Zealand</option>
-    <option value="Air Canada">Air Canada</option>
-    <option value="Flair">Flair</option>
-    <option value="Porter">Porter</option>
-    <option value="United">United</option>
-  </select>
-  <select name="airport" id="">
-    <option value="AKL">AKL</option>
-    <option value="WLG">WLG</option>
-    <option value="YHZ">YHZ</option>
-    <option value="YVR">YVR</option>
-    <option value="YYZ" selected>YYZ</option>
-  </select>
-  <input type="number" name="flightNo" id="">
-  <input type="datetime-local" name="departs" value="<%= defaultDeparts %>">
-  <button type="submit">Add Flight</button>
+  <div class="mb-3">
+    <label for="airline" class="form-label">Airline:</label>
+    <select name="airline" class="form-select" id="airline">
+      <option value="Air New Zealand">Air New Zealand</option>
+      <option value="Air Canada">Air Canada</option>
+      <option value="Flair">Flair</option>
+      <option value="Porter">Porter</option>
+      <option value="United">United</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="airport" class="form-label">Airport:</label>
+    <select name="airport" class="form-select" id="airport">
+      <option value="AKL">AKL</option>
+      <option value="WLG">WLG</option>
+      <option value="YHZ">YHZ</option>
+      <option value="YVR">YVR</option>
+      <option value="YYZ" selected>YYZ</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="flightNo" class="form-label">Flight Number:</label>
+    <input type="number" name="flightNo" class="form-control" id="flightNo">
+  </div>
+  <div class="mb-3">
+    <label for="departs" class="form-label">Departure Date:</label>
+    <input type="datetime-local" class="form-control" name="departs" id="departs"
+      value="<%= defaultDeparts %>"
+    >
+  </div>
+  <button type="submit" class="btn btn-primary">Add Flight</button>
 </form>
 <p><%= errorMsg %></p>
 

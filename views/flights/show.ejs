@@ -28,12 +28,19 @@
     </tr>
   </thead>
   <tbody>
-  <% flight.destinations.forEach(destination => { %>
+  <% if (flight.destinations.length > 0) { %>
+    <% flight.destinations.forEach(destination => { %>
+      <tr>
+        <td><%= destination.airport %></td>
+        <td><%= destination.arrival.toLocaleString() %></td>
+      </tr>
+    <% }); %>
+  <% } else { %>
     <tr>
-      <td><%= destination.airport %></td>
-      <td><%= destination.arrival.toLocaleString() %></td>
+      <td>No destinations yet</td>
+      <td>-</td>
     </tr>
-  <% }); %>
+  <% } %>
   </tbody>
 </table>
 <h5>Add a Destination:</h5>

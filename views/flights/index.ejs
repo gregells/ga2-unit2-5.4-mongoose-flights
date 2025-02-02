@@ -8,6 +8,7 @@
       <th scope="col">Airport</th>
       <th scope="col">Flight No.</th>
       <th scope="col">Departure Date</th>
+      <th scope="col">Details</th>
     </tr>
   </thead>
   <tbody>
@@ -19,6 +20,7 @@
         <td <%= flight.departs - currentDate < 0 ? 'style=color:red' : ''%>>
           <%= flight.departs.toLocaleString() %>
         </td>
+        <td><a href="/flights/<%= flight._id %>">Details</a></td>
       </tr>
     <% }); %>
   </tbody>

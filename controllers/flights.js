@@ -67,7 +67,7 @@ async function show(req, res) {
   } catch (err) {
     console.log(err);
     res.render('flights/show', {
-      title: "All Flights",
+      title: "Flight Details",
       errorMsg: err.message
     });
   }

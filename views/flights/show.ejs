@@ -24,7 +24,7 @@
   <thead>
     <tr>
       <th scope="col">Airport</th>
-      <th scope="col">Departure Date</th>
+      <th scope="col">Arrival Date</th>
     </tr>
   </thead>
   <tbody>
@@ -39,21 +39,17 @@
 <h5>Add a Destination:</h5>
 <form action="/flights/<%= flight._id %>/destinations" method="POST">
   <div class="input-group mb-3">
-    <div class="mb-3">
-      <label for="airport" class="form-label">Airport:</label>
-      <select name="airport" class="form-select" id="airport">
-        <option value="AKL">AKL</option>
-        <option value="WLG">WLG</option>
-        <option value="YHZ">YHZ</option>
-        <option value="YVR">YVR</option>
-        <option value="YYZ">YYZ</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="arrival" class="form-label">Arrival Date:</label>
-      <input type="datetime-local" class="form-control" name="arrival" id="arrival"
-      >
-    </div>
+    <label for="airport" class="input-group-text">Airport:</label>
+    <select name="airport" class="form-select" id="airport">
+      <option value="AKL">AKL</option>
+      <option value="WLG">WLG</option>
+      <option value="YHZ">YHZ</option>
+      <option value="YVR">YVR</option>
+      <option value="YYZ">YYZ</option>
+    </select>
+    <label for="arrival" class="input-group-text">Arrival Date:</label>
+    <input type="datetime-local" class="form-control" name="arrival" id="arrival"
+    >
     <button type="submit" class="btn btn-primary">Add Destination</button>
   </div>
 </form>

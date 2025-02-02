@@ -2,6 +2,19 @@ const mongoose = require('mongoose');
 // Create shortcut to the mongoose.Schema class:
 const Schema = mongoose.Schema;
 
+const destinationSchema = new Schema({
+  airport: {
+    type: String,
+    enum: ['AKL', 'WLG', 'YHZ', 'YVR', 'YYZ'],
+    default: 'YYZ'
+  },
+  arrival: {
+    type: Date
+  }
+}, {
+  timestamps: true
+});
+
 const flightSchema = new Schema({
   airline: {
     type: String,
@@ -25,7 +38,8 @@ const flightSchema = new Schema({
       date.setFullYear(date.getFullYear() + 1);
       return date
     }
-  }
+  },
+  destinations: [destinationSchema]
 }, {
   timestamps: true
 });

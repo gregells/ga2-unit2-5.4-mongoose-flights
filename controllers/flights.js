@@ -4,9 +4,10 @@ module.exports = {
   index,
   new: newFlight,
   create,
+  show,
 }
 
-async function index (req, res) {
+async function index(req, res) {
   try {
     const flights = await Flight.find({}).sort({ departs: 1 });
     const currentDate = new Date();
@@ -25,7 +26,7 @@ async function index (req, res) {
   }
 }
 
-function newFlight (req, res) {
+function newFlight(req, res) {
   // Create default time to pass to template:
   const newFlight = new Flight();
   const departs = newFlight.departs;
@@ -41,7 +42,7 @@ function newFlight (req, res) {
   });
 }
 
-async function create (req, res) {
+async function create(req, res) {
   try {
     await Flight.create(req.body);
     res.redirect('/flights');
@@ -51,6 +52,23 @@ async function create (req, res) {
       title: 'Add New Flight',
       errorMsg: err.message,
       defaultDeparts: ''
+    });
+  }
+}
+
+async function show(req, res) {
+  try {
+    const flight = await Flight.findById(req.params.id);
+    res.render('flights/show', {
+      title: 'Flight Details',
+      errorMsg: '',
+      flight
+    });
+  } catch (err) {
+    console.log(err);
+    res.render('flights/show', {
+      title: "All Flights",
+      errorMsg: err.message
     });
   }
 }

@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+<h1 class="my-3"><%= title %></h1>
+<form action="/flights/<%= id %>/tickets" method="POST">
+  <div class="mb-3">
+    <label for="seat" class="form-label">Seat:</label>
+    <input type="text" class="form-control" name="seat" id="seat">
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Price:</label>
+    <input type="number" class="form-control" name="price" id="price">
+  </div>
+  <button type="submit" class="btn btn-primary">Add Ticket</button>
+</form>
+<p><%= errorMsg %></p>
+
+<%- include('../partials/footer') %>

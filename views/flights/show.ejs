@@ -73,7 +73,7 @@
     <% tickets.forEach(ticket => { %>
       <tr>
         <td><%= ticket.seat %></td>
-        <td><%= ticket.price %></td>
+        <td>$<%= ticket.price %></td>
       </tr>
     <% }); %>
   <% } else { %>

@@ -48,11 +48,11 @@
   <div class="input-group mb-3">
     <label for="airport" class="input-group-text">Airport:</label>
     <select name="airport" class="form-select" id="airport">
-      <option value="AKL">AKL</option>
-      <option value="WLG">WLG</option>
-      <option value="YHZ">YHZ</option>
-      <option value="YVR">YVR</option>
-      <option value="YYZ">YYZ</option>
+      <option value="AKL" <%= exAirports.includes('AKL') ? 'disabled' : '' %>>AKL</option>
+      <option value="WLG" <%= exAirports.includes('WLG') ? 'disabled' : '' %>>WLG</option>
+      <option value="YHZ" <%= exAirports.includes('YHZ') ? 'disabled' : '' %>>YHZ</option>
+      <option value="YVR" <%= exAirports.includes('YVR') ? 'disabled' : '' %>>YVR</option>
+      <option value="YYZ" <%= exAirports.includes('YYZ') ? 'disabled' : '' %>>YYZ</option>
     </select>
     <label for="arrival" class="input-group-text">Arrival Date:</label>
     <input type="datetime-local" class="form-control" name="arrival" id="arrival"

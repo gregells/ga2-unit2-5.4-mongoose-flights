@@ -4,7 +4,8 @@
 <form action="/flights/<%= id %>/tickets" method="POST">
   <div class="mb-3">
     <label for="seat" class="form-label">Seat:</label>
-    <input type="text" class="form-control" name="seat" id="seat">
+    <input type="text" class="form-control" name="seat" id="seat" required pattern="[A-F][1-9]\d?">
+    <div class="form-text" id="basic-addon4">A1 - F99</div>
   </div>
   <div class="mb-3">
     <label for="price" class="form-label">Price:</label>

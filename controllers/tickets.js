@@ -4,6 +4,7 @@ const Flight = require('../models/flight');
 module.exports = {
   new: newTicket,
   create,
+  delete: deleteTicket,
 };
 
 function newTicket(req, res) {
@@ -22,9 +23,22 @@ async function create(req, res) {
   } catch(err) {
     console.log(err);
     res.render('tickets/new', { 
-      title: 'Add New Flight',
+      title: 'Add New Ticket',
       id: req.params.id,
       errorMsg: err.message,
+    });
+  }
+}
+
+async function deleteTicket(req, res) {
+  try {
+    const ticket = await Ticket.findByIdAndDelete(req.params.id);
+    res.redirect(`/flights/${ticket.flight}`);
+  } catch(err) {
+    console.log(err);
+    res.render('flights/show', {
+      title: "Flight Details",
+      errorMsg: err.message
     });
   }
 }

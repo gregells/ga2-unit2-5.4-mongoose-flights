@@ -60,6 +60,31 @@
     <button type="submit" class="btn btn-primary">Add Destination</button>
   </div>
 </form>
+<h5>Tickets:</h5>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Seat</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% if (tickets.length > 0) { %>
+    <% tickets.forEach(ticket => { %>
+      <tr>
+        <td><%= ticket.seat %></td>
+        <td><%= ticket.price %></td>
+      </tr>
+    <% }); %>
+  <% } else { %>
+    <tr>
+      <td>No tickets yet</td>
+      <td>-</td>
+    </tr>
+  <% } %>
+  </tbody>
+</table>
+<a href="/flights/<%= flight._id %>/tickets/new" class="btn btn-primary">Add a Ticket</a>
 <p><%= errorMsg %></p>
 
 <%- include('../partials/footer') %>

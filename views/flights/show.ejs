@@ -66,19 +66,26 @@
     <tr>
       <th scope="col">Seat</th>
       <th scope="col">Price</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
-  <% if (tickets.length > 0) { %>
-    <% tickets.forEach(ticket => { %>
-      <tr>
-        <td><%= ticket.seat %></td>
-        <td>$<%= ticket.price %></td>
+    <% if (tickets.length > 0) { %>
+      <% tickets.forEach(ticket => { %>
+        <tr>
+          <td><%= ticket.seat %></td>
+          <td>$<%= ticket.price %></td>
+          <td>
+            <form action="/tickets/<%= ticket._id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-danger">Delete ticket</button>
+          </form>
+        </td>
       </tr>
     <% }); %>
   <% } else { %>
     <tr>
       <td>No tickets yet</td>
+      <td>-</td>
       <td>-</td>
     </tr>
   <% } %>

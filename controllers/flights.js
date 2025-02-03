@@ -1,4 +1,5 @@
 const Flight = require('../models/flight');
+const Ticket = require('../models/ticket');
 
 module.exports = {
   index,
@@ -68,12 +69,14 @@ async function show(req, res) {
     // Create list of airports to exclude (already in flight):
     const exAirports = [flight.airport];
     flight.destinations.forEach(dest => exAirports.push(dest.airport));
-    console.log(exAirports);
+    // Retrieve the tickets for this flight:
+    const tickets = await Ticket.find({ flight: flight._id });
     res.render('flights/show', {
       title: 'Flight Details',
       errorMsg: '',
       flight,
-      exAirports
+      exAirports,
+      tickets
     });
   } catch (err) {
     console.log(err);

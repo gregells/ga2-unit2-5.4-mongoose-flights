@@ -59,10 +59,21 @@ async function create(req, res) {
 async function show(req, res) {
   try {
     const flight = await Flight.findById(req.params.id);
+    // Sort the destinations by arrival time:
+    flight.destinations.sort((a, b) => {
+      const arrivalA = a.arrival;
+      const arrivalB = b.arrival;
+      return arrivalA - arrivalB;
+    });
+    // Create list of airports to exclude (already in flight):
+    const exAirports = [flight.airport];
+    flight.destinations.forEach(dest => exAirports.push(dest.airport));
+    console.log(exAirports);
     res.render('flights/show', {
       title: 'Flight Details',
       errorMsg: '',
-      flight
+      flight,
+      exAirports
     });
   } catch (err) {
     console.log(err);
